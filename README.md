@@ -79,8 +79,7 @@ La segunda versión ya incluye las dos cosas:
 ## 4. El modelo
 
 Lo modelé en Python, en [`engranaje.py`](engranaje.py), con
-[build123d](https://github.com/gumyr/build123d) y
-[text-to-cad](https://github.com/earthtojake/text-to-cad). Los dientes tienen
+[build123d](https://github.com/gumyr/build123d). Los dientes tienen
 **perfil de evolvente** real (no son trapecios), con una pequeña holgura para
 que engranen sin agarrotarse.
 
@@ -103,11 +102,11 @@ no encaja, se cambia el número y se vuelve a generar:
 python engranaje.py
 ```
 
-Eso genera de nuevo los tres archivos:
+Eso genera de nuevo el STEP y el STL:
 
 - `STEP/engranaje.step`: modelo CAD, para editarlo en otro programa
 - `STL/engranaje.stl`: malla para cualquier laminador
-- `3MF/engranaje.3mf`: proyecto de Bambu Studio
+- `3MF/engranaje.3mf`: proyecto de Bambu Studio, con la pieza ya preparada para imprimir
 
 ## 5. Imprimirlo
 
@@ -121,7 +120,7 @@ Eso genera de nuevo los tres archivos:
 ## Herramientas
 
 - **Medición:** calibre digital.
-- **Modelado:** Python con build123d y text-to-cad.
+- **Modelado:** Python con build123d.
 - **Laminado:** Bambu Studio.
 - **IA:** me ayudé de una IA para redactar este texto, editar las fotos (recorte,
   cotas y flechas) y revisar el modelo.

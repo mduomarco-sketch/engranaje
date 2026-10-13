@@ -13,9 +13,11 @@ redondo, cubo que sobresale 2 mm por el lado corto, alma del disco rebajada
 """
 
 import math
+from pathlib import Path
 
-from cadgen import build123d as bd
-from cadgen import step, stl, threemf
+import build123d as bd
+
+_HERE = Path(__file__).resolve().parent
 
 MODULE = 2.0
 TEETH = 25
@@ -132,14 +134,16 @@ def make_gear():
     return body
 
 
-@step(out="STEP/engranaje.step")
-@stl(out="STL/engranaje.stl", mesh_tolerance=1e-3)
-@threemf(out="3MF/engranaje.3mf")
-def engranaje():
+def main():
     gear = make_gear()
     gear.label = "engranaje_m2_z25"
-    return gear
+    (_HERE / "STEP").mkdir(exist_ok=True)
+    (_HERE / "STL").mkdir(exist_ok=True)
+    bd.export_step(gear, str(_HERE / "STEP" / "engranaje.step"))
+    bd.export_stl(gear, str(_HERE / "STL" / "engranaje.stl"), tolerance=1e-3, angular_tolerance=0.1)
+    bb = gear.bounding_box()
+    print(f"engranaje: {bb.size.X:.2f} x {bb.size.Y:.2f} x {bb.size.Z:.2f} mm, V={gear.volume / 1000:.2f} cm3")
 
 
 if __name__ == "__main__":
-    engranaje()
+    main()
