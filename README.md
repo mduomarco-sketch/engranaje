@@ -50,7 +50,7 @@ recambio.
 
 ## 2. Lo que no salía en las fotos
 
-Hubo detalles que no estaban medidos y que estimé a partir de las fotos:
+Hubo detalles que no estaban medidos:
 
 | Detalle | Valor usado | Origen |
 |---|---|---|
